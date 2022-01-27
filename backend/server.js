@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const { Octokit } = require("@octokit/core");
 
-const octokit = new Octokit({ auth: `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` });
+const octokit = new Octokit({ auth: `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` });
 
 const app = express();
 
