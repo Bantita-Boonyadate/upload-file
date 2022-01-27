@@ -2,7 +2,18 @@ const express = require("express");
 const cors = require("cors");
 const { Octokit } = require("@octokit/core");
 
-const octokit = new Octokit({ auth: `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` });
+const octokit = new Octokit({ auth: `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` });
+
+const response = octokit.request('POST /repos/{owner}/{repo}/pulls', {
+    owner: 'Bantita-Boonyadate',
+    repo: 'upload-file',
+    title: 'My Test Pull Request #2',
+    body: 'This pull request is a test #2!',
+    head: 'test-branch',
+    base: 'dev'
+})
+
+console.log(`${response} repo found. JUNE!!!!`);
 
 const app = express();
 
