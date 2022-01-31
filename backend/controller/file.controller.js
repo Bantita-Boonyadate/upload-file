@@ -13,7 +13,8 @@ const upload = async (req, res) => {
             message: "Uploaded file successfully: " + req.file.originalname,
             // imageUrl: req.file.originalname,
             // fileName: 'http://localhost:8080/files/' + req.file.originalname
-            imageUrl: 'http://localhost:8080/files/' + req.file.originalname
+            imageUrl: 'http://localhost:8080/files/' + req.file.originalname,
+            fileName: req.file.originalname
         });
         // res.status(200).send(req.files);
     } catch (err) {

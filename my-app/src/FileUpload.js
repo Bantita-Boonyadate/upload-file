@@ -3,11 +3,8 @@ import React from 'react';
 // import { useDispatch } from 'react-redux';
 
 function FileUpload({ getFilesFromUpload, selectFile, uploadFile }) {
-    
-
     console.log(getFilesFromUpload);
-
-
+    
     return (
         <>
             <div className='file-upload'>
@@ -16,7 +13,7 @@ function FileUpload({ getFilesFromUpload, selectFile, uploadFile }) {
                 <button onClick={uploadFile} className='uploadButton'>Upload</button>
                 <h3>Display</h3>
                 {getFilesFromUpload.map((item) => {
-                    console.log(item);
+                    // console.log(item);
                     return (
                     <img style={{width: "200px"}} src={item.imageUrl} alt={item.name} />
                     )
