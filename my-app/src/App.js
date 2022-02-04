@@ -6,7 +6,7 @@ import { getFiles, showFiles, addFiles } from './slice';
 import { useSelector, useDispatch } from 'react-redux';
 import { Octokit } from "@octokit/core";
 
-const octokit = new Octokit({ auth: `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` });
+const octokit = new Octokit({ auth: `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` });
 
 function App() {
   const dispatch = useDispatch();
@@ -38,6 +38,55 @@ function App() {
       // getAllFiles({ imageUrl: "http://localhost:8080/files/" + res.data.imageUrl })
       getAllFiles(res.data)
 
+      // try {
+      //   octokit.request('POST /repos/{owner}/{repo}/git/blobs', {
+      //     owner: 'Bantita-Boonyadate',
+      //     repo: 'upload-file',
+      //     content: 'content-blob-test'
+      //   })
+      //     .then((res) => {
+      //       console.log(res.data.sha);
+      //       const getSHA = res.data.sha;
+
+      //       octokit.request('POST /repos/{owner}/{repo}/git/refs', {
+      //         owner: 'Bantita-Boonyadate',
+      //         repo: 'upload-file',
+      //         ref: "refs/heads/" + fileName,
+      //         sha: getSHA,
+      //       })
+      //         .then((newBranch) => {
+      //           console.log(newBranch.data);
+      //           const refNameBranch = newBranch.data.ref;
+      //           const spiltNameBranch = refNameBranch.split('/');
+      //           const nameBranch = spiltNameBranch[2];
+
+      //           // octokit.request('POST /repos/{owner}/{repo}/git/commits', {
+      //           //   owner: 'Bantita-Boonyadate',
+      //           //   repo: 'upload-file',
+      //           //   message: 'message-test-commit',
+      //           //   tree: 'tree'
+      //           // })
+      //           //   .then((CreateCommit) => {
+      //           //     console.log(CreateCommit);
+      //           //   })
+
+      //           // Create PR
+      //           // const newPR = octokit.request('POST /repos/{owner}/{repo}/pulls', {
+      //           //   owner: 'Bantita-Boonyadate',
+      //           //   repo: 'upload-file',
+      //           //   title: 'My Test Pull Request #2',
+      //           //   body: 'This pull request is a test #2!',
+      //           //   head: nameBranch,
+      //           //   base: 'dev'
+      //           // })
+      //           // console.log(newPR);
+      //         })
+      //     })
+
+      // } catch (error) {
+      //   console.log(error);
+      // }
+
       // Create new branch and PR
 
       try {
@@ -45,14 +94,13 @@ function App() {
           owner: 'Bantita-Boonyadate',
           repo: 'upload-file',
           ref: "refs/heads/" + fileName,
-          sha: "3a365f09c8c85b41db96ad2b0c9d5b6a8715c44f",
+          sha: "8e6a9bfd89208d93297b1646a3050e6f0ba1c879",
         })
           .then((newBranch) => {
             const refNameBranch = newBranch.data.ref;
             const spiltNameBranch = refNameBranch.split('/');
             const nameBranch = spiltNameBranch[2];
-            
-            
+
             // Create PR
             // const newPR = octokit.request('POST /repos/{owner}/{repo}/pulls', {
             //   owner: 'Bantita-Boonyadate',
@@ -64,8 +112,8 @@ function App() {
             // })
             // console.log(newPR);
           })
-    
-    
+
+
       } catch (error) {
         console.log(error);
       }
